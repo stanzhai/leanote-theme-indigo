@@ -39,7 +39,11 @@
 		  <div class="brand-wrap" style="background-image:url({{$.themeBaseUrl}}/images/brand.jpg)">
 			<div class="brand">
 			  <a href="" class="avatar waves-effect waves-circle waves-light">
-				<img src="{{$.themeBaseUrl}}/images/brand.jpg">
+				{{ if $.blogInfo.UserLogo}}
+					<img src="{{$.blogInfo.UserLogo}}" id="userLogo">
+				{{else}}
+					<img src="{{$.siteUrl}}/images/blog/default_avatar.png" id="userLogo">
+				{{end}}
 			  </a>
 			  <hgroup class="introduce">
 				<h5 class="nickname">Stan Zhai</h5>

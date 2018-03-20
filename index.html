@@ -7,7 +7,7 @@
 		<li class="post-list-item fade">
 			<article id="post-{{$.postUrl}}/{{.UrlTitle}}" class="article-card article-type-post" itemprop="blogPost">
 				<div class="post-meta">
-					<time class="post-time" title="{{$.post.PublicTime | datetime}} " itemprop="datePublished">{{$.post.PublicTime | datetime}} </time>
+					<time class="post-time" title="{{$.PublicTime | datetime}} " itemprop="datePublished">{{$.PublicTime | datetime}} </time>
 				</div>
 			
 				<h3 class="post-title" itemprop="name">
@@ -29,7 +29,7 @@
 				{{if $.post.Tags}} 
 				<div class="post-footer">
 					<ul class="article-tag-list">
-						{{range $index,$tag := $.post.Tags}}
+						{{range $index,$tag := $.Tags}}
 						<li class="article-tag-list-item"><a class="article-tag-list-link waves-effect waves-button" href="">{{$tag}}</a></li>
 						{{end}}
 					</ul>
