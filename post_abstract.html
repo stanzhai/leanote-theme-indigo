@@ -6,7 +6,7 @@
 		</div>
 	
 		<h3 class="post-title" itemprop="name">
-			<a class="post-title-link" href="{{.postUrl}}/{{.UrlTitle}}">
+			<a class="post-title-link" href="{{$.postUrl}}/{{.UrlTitle}}">
 			{{if .Title}}
 				{{.Title}}
 			{{else}}
@@ -17,7 +17,7 @@
 	
 		<div class="post-content" id="post-content" itemprop="postContent">
 			{{.Abstract | raw}}
-			<a href="{{.postUrl}}/{{.UrlTitle}}" class="post-more waves-effect waves-button">
+			<a href="{{$.postUrl}}/{{.UrlTitle}}" class="post-more waves-effect waves-button">
 				阅读全文...
 			</a>
 		</div>
@@ -25,7 +25,7 @@
 		<div class="post-footer">
 			<ul class="article-tag-list">
 				{{range $index,$tag := .Tags}}
-				<li class="article-tag-list-item"><a class="article-tag-list-link waves-effect waves-button" href="">{{$tag}}</a></li>
+				<li class="article-tag-list-item"><a class="article-tag-list-link waves-effect waves-button" href="{{$.tagPostsUrl}}/{{$tag}}">{{$tag}}</a></li>
 				{{end}}
 			</ul>
 		</div>

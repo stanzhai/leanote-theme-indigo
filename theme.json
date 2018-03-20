@@ -3,6 +3,7 @@
     "Version": "1.0",
     "Author": "Stan Zhai",
     "AuthorUrl": "https://github.com/stanzhai",
+    "Desc": "配置主题，请编辑修改theme.json文件。",
     "Reward": true,
     "RewardTitle": "请我吃辣条"
 }
