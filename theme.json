@@ -17,9 +17,9 @@
 
 */
 {
-    "Name": "Leanote default theme",
+    "Name": "Indigo",
     "Version": "1.0",
-    "Author": "leanote.com",
+    "Author": "Stan Zhai",
     "AuthorUrl": "http://leanote.com",
     "FriendLinks": [
         {"Title": "My Note", "Url": "http://leanote.com/note"},
