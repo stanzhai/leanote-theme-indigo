@@ -18,10 +18,15 @@
     {{set . "nextPageUrl" "#"}}
 {{end}}
 
-{{$.paging.CurPage}}/{{$.paging.TotalPage}}
-<ul class="pager">
-	<li class="{{$.prePageClass}}"><a href="{{$.prePageUrl}}">Pre</a></li>
-	<li class="{{$.nextPageClass}}"><a href="{{$.nextPageUrl}}">Next</a></li>
-</ul>
+<nav id="page-nav">
+    <div class="inner">
+        <a class="extend next waves-effect waves-button {{$.prePageClass}}" href="{{$.prePageUrl}}" rel="pre">
+            上一页
+        </a>
+        <a class="extend next waves-effect waves-button {{$.nextPageClass}}" href="{{$.nextPageUrl}}" rel="next">
+            下一页
+        </a>
+    </div>
+</nav>
 
 {{end}}
