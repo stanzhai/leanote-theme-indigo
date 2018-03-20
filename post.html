@@ -87,8 +87,8 @@
         </div>
 	</div>
 	
-	{{if $.prePost || $.nextPost}}
-	<nav class="post-nav flex-row flex-justify-between{{if !$.prePost}} flex-row-reverse {{end}}">
+	{{if or $.prePost $.nextPost}}
+	<nav class="post-nav flex-row flex-justify-between{{if not $.prePost}} flex-row-reverse {{end}}">
 		{{if $.prePost}}
 		<div class="waves-block waves-effect prev">
 			<a href="{{$.postUrl}}/{{$.prePost.UrlTitle}}" id="post-prev" class="post-nav-link">
@@ -137,17 +137,7 @@
 </div>
 {{end}}
 
-
 {{template "highlight.html" $}}
-
-<div id="blogNav">
-	<div id="blogNavNav">
-		<i class="fa fa-align-justify" title="Table of content"></i>
-		<span>Table of content</span>
-	</div>
-	<div id="blogNavContent">
-	</div>
-</div>
 
 <!-- 一些在share_comment.js 需要使用的变量 -->
 <script>
