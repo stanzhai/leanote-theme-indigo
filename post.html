@@ -1,77 +1,143 @@
 {{template "header.html" .}}
-
-<div id="postsContainer">
-	<div id="posts">
-		<div class="each-post">
-			<div class="title">
-				{{if $.post.Title}}
-          	        {{$.post.Title}}
-          	    {{else}}
-          	        Untitled
-          	    {{end}}
-			</div>
-			<div class="created-time">
-			    {{if $.post.Tags}} 
-				    <i class="fa fa-bookmark-o"></i>
-    				{{blogTags $ $.post.Tags}}
-    				&nbsp;&nbsp;
-    			{{end}}
-    			
-    			<i class="fa fa-clock-o"></i> {{$.post.PublicTime | datetime}} 
-    			&nbsp;&nbsp;
-    			<span class="fa fa-eye"></span> {{$.post.ReadNum}}
-    			&nbsp;&nbsp;
-    			<span class="fa fa-thumbs-o-up"></span> {{$.post.LikeNum}}
-    			&nbsp;&nbsp;
-    			<span class="fa fa-comments-o"></span> {{$.post.CommentNum}}
-			</div>
-			
-			<!-- 仅为移动端 -->
-			<div class="mobile-created-time">
-			{{ if $.blogInfo.UserLogo}}
-				<img src="{{$.blogInfo.UserLogo}}" id="userLogo">
+<aside class="post-widget">
+	<nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+		<h4>TOC</h4>
+		<!-- TODO: add topic -->
+	</nav>
+</aside>
+<article id="post" class="post-article article-type-post fade in" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">
+			{{if $.post.Title}}
+				{{$.post.Title}}
 			{{else}}
-				<img src="{{$.siteUrl}}/images/blog/default_avatar.png" id="userLogo">
+				Untitled
 			{{end}}
-			{{$.blogInfo.Username}}
-	
-			{{if .post.Tags}}
-				&nbsp;
-				<i class="fa fa-bookmark-o" style="color: #666"></i>
-				{{blogTags $ $.post.Tags}}
-			{{end}}
+		</h1>
+        <div class="post-meta">
+			<time class="post-time" title="{{$.post.PublicTime | datetime}} " itemprop="datePublished">{{$.post.PublicTime | datetime}} </time>
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+		{{if $.post.IsMarkdown }}
+			<div id="markdownContent" style="display: none">
+				<!-- 用textarea装html, 防止得到的值失真 -->
+				<textarea>{{$.post.Content | raw}}</textarea>
 			</div>
-			
-			<div class="desc {{if $.post.IsMarkdown }}markdown-content{{end}}" id="content">
-				{{if $.post.IsMarkdown }}
-					<div id="markdownContent" style="display: none">
-						<!-- 用textarea装html, 防止得到的值失真 -->
-						<textarea>{{$.post.Content | raw}}</textarea>
-					</div>
-					<div style="padding: 20px; text-align: center">
-						<img src="{{$.themeBaseUrl}}/images/loading-32.gif" />
-					</div>
+			<div style="padding: 20px; text-align: center">
+				<img src="{{$.themeBaseUrl}}/images/loading.gif" />
+			</div>
+		{{else}}
+			{{$.post.Content | raw}}
+		{{end}}
+        </div>
+
+		<blockquote class="post-copyright">
+			<div class="content">
+				<span class="post-time">最后更新时间：<time datetime="2017-08-20T13:57:23.736Z" itemprop="dateUpdated">2017年08月20日 21:57:23</time></span>
+				<br>原始链接：<a href="{{$.postUrl}}/{{.UrlTitle}}" target="_blank" rel="external">{{$.postUrl}}/{{.UrlTitle}}</a>
+			</div>
+			<footer>
+				<a href="{{$.themeInfo.AuthorUrl}}">
+				{{ if $.blogInfo.UserLogo}}
+					<img src="{{$.blogInfo.UserLogo}}" id="userLogo">
 				{{else}}
-						{{$.post.Content | raw}}
+					<img src="{{$.siteUrl}}/images/blog/default_avatar.png" id="userLogo">
 				{{end}}
-			</div>
-			
-		    <div class="pre-next-post">
-		        <p>
-			    Pre: {{if $.prePost}}<a href="{{$.postUrl}}/{{$.prePost.UrlTitle}}">{{$.prePost.Title}}</a>{{else}}No Post{{end}}
-                </p>
-                <p>
-                Next: {{if $.nextPost}}<a href="{{$.postUrl}}/{{$.nextPost.UrlTitle}}">{{$.nextPost.Title}}</a>{{else}}No Post{{end}}
-			    </p>
-			</div>
-			
-			<!-- share & comment -->
-			{{template "share_comment.html" $}}
+				{{$.blogInfo.Username}}
+				</a>
+			</footer>
+		</blockquote>
+		{{if $.themeInfo.Reward}}
+		<div class="page-reward">
+			<a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
 		</div>
+		{{end}}
+
+        <div class="post-footer">
+			<ul class="article-tag-list">
+				{{if $.post.Tags}} 
+				<li class="article-tag-list-item"><a class="article-tag-list-link waves-effect waves-button" href="">{{blogTags $ $.post.Tags}}</a></li>
+    			{{end}}
+			</ul>
+
+			<div class="page-share-wrap">
+				<div class="page-share" id="pageShare">
+					<ul class="reset share-icons">
+						<li>
+						<a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=&title=&pic=" data-title="微博">
+							<i class="icon icon-weibo"></i>
+						</a>
+						</li>
+						<li>
+						<a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+							<i class="icon icon-weixin"></i>
+						</a>
+						</li>
+						<li>
+						<a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=&title=&source=" data-title=" QQ">
+							<i class="icon icon-qq"></i>
+						</a>
+						</li>
+					</ul>
+				</div>
+				<a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+					<i class="icon icon-share-alt icon-lg"></i>
+				</a>
+			</div>
+        </div>
+	</div>
+	
+	{{if $.prePost || $.nextPost}}
+	<nav class="post-nav flex-row flex-justify-between{{if !$.prePost}} flex-row-reverse {{end}}">
+		{{if $.prePost}}
+		<div class="waves-block waves-effect prev">
+			<a href="{{$.postUrl}}/{{$.prePost.UrlTitle}}" id="post-prev" class="post-nav-link">
+			<div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+			<h4 class="title">{{$.prePost.Title}}</h4>
+			</a>
+		</div>
+		{{end}}
+		{{if $.nextPost}}
+		<div class="waves-block waves-effect next">
+			<a href="{{$.postUrl}}/{{$.nextPost.UrlTitle}}" id="post-next" class="post-nav-link">
+			<div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+			<h4 class="title">{{$.nextPost.Title}}</h4>
+			</a>
+		</div>
+		{{end}}
+	</nav>
+	{{end}}
+
+	<!-- share & comment -->
+	{{template "share_comment.html" $}}
+</article>
+
+{{if $.themeInfo.Reward}}
+<div id="reward" class="page-modal reward-lay">
+	<a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+	<h3 class="reward-title">
+		<i class="icon icon-quote-left"></i>
+		{{$.themeInfo.RewardTitle}}
+		<i class="icon icon-quote-right"></i>
+	</h3>
+	<div class="reward-content">
+		<div class="reward-code">
+			<img id="rewardCode" src="{{$.themeBaseUrl}}/images/wechat.jpg" alt="打赏二维码">
+		</div>
+		<label class="reward-toggle">
+			<input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+				data-wechat="{{$.themeBaseUrl}}/images/wechat.jpg" data-alipay="{{$.themeBaseUrl}}/images/alipay.jpg">
+			<div class="reward-toggle-ctrol">
+				<span class="reward-toggle-item wechat">微信</span>
+				<span class="reward-toggle-label"></span>
+				<span class="reward-toggle-item alipay">支付宝</span>
+			</div>
+		</label>
 	</div>
 </div>
+{{end}}
 
-{{template "footer.html" $}}
+
 {{template "highlight.html" $}}
 
 <div id="blogNav">
@@ -97,10 +163,6 @@ var commentNum = +"{{$.post.CommentNum}}";
 <link href="{{$.shareCommentCssUrl}}" rel="stylesheet">
 <!-- 一些公用的js -->
 <script src="{{$.blogCommonJsUrl}}"></script>
-<script src="{{$.siteUrl}}/public/blog/js/jsrender.js"></script>
-<script src="{{$.siteUrl}}/public/blog/js/jquery-cookie-min.js"></script>
-<script src="{{$.siteUrl}}/public/blog/js/bootstrap-dialog.min.js"></script>
-<script src="{{$.siteUrl}}/public/blog/js/jquery.qrcode.min.js"></script>
 <!-- share && comment -->
 <script src="{{$.shareCommentJsUrl}}"></script>
 
@@ -112,8 +174,8 @@ markdown
 <script src="/public/libs/md2html/md2html.js"></script>
 <script>
 var content = $.trim($("#markdownContent textarea").val());
-md2Html(content, $("#content"), function(html) {
-    $("pre").addClass("prettyprint linenums");
+md2Html(content, $("#post-content"), function(html) {
+    $("pre").addClass("prettyprint");
     prettyPrint();
     initNav();
     weixin();
@@ -129,5 +191,4 @@ $(function() {
 </script>
 {{end}}
 
-</body>
-</html>
+{{template "footer.html" $}}
