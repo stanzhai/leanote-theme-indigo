@@ -54,11 +54,13 @@
 		{{end}}
 
         <div class="post-footer">
+			{{if $.post.Tags}} 
 			<ul class="article-tag-list">
-				{{if $.post.Tags}} 
-				<li class="article-tag-list-item"><a class="article-tag-list-link waves-effect waves-button" href="">{{blogTags $ $.post.Tags}}</a></li>
-    			{{end}}
+				{{range $index,$tag := $.post.Tags}}
+				<li class="article-tag-list-item"><a class="article-tag-list-link waves-effect waves-button" href="">{{$tag}}</a></li>
+				{{end}}
 			</ul>
+			{{end}}
 
 			<div class="page-share-wrap">
 				<div class="page-share" id="pageShare">
@@ -137,8 +139,6 @@
 </div>
 {{end}}
 
-{{template "highlight.html" $}}
-
 <!-- 一些在share_comment.js 需要使用的变量 -->
 <script>
 var siteUrl = "{{$.siteUrl}}"; // common.js需要
@@ -161,6 +161,7 @@ markdown
 调用markdown来解析得到html
 -->
 {{if $.post.IsMarkdown }}
+{{template "highlight.html" $}}
 <script src="/public/libs/md2html/md2html.js"></script>
 <script>
 var content = $.trim($("#markdownContent textarea").val());
