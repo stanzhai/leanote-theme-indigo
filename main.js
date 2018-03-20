@@ -1,16 +1,16 @@
 (function (w, d) {
 
     var body = d.body,
-        $ = d.querySelector.bind(d),
-        $$ = d.querySelectorAll.bind(d),
-        root = $('html'),
-        gotop = $('#gotop'),
-        menu = $('#menu'),
-        header = $('#header'),
-        mask = $('#mask'),
-        menuToggle = $('#menu-toggle'),
-        menuOff = $('#menu-off'),
-        loading = $('#loading'),
+        select = d.querySelector.bind(d),
+        selectAll = d.querySelectorAll.bind(d),
+        root = select('html'),
+        gotop = select('#gotop'),
+        menu = select('#menu'),
+        header = select('#header'),
+        mask = select('#mask'),
+        menuToggle = select('#menu-toggle'),
+        menuOff = select('#menu-off'),
+        loading = select('#loading'),
         animate = w.requestAnimationFrame,
         scrollSpeed = 200 / (1000 / 60),
         forEach = Array.prototype.forEach,
@@ -59,7 +59,7 @@
             }
         },
         toggleMenu: function (flag) {
-            var main = $('#main');
+            var main = select('#main');
             if (flag) {
                 menu.classList.remove('hide');
 
@@ -97,7 +97,7 @@
             }
         },
         toc: (function () {
-            var toc = $('#post-toc');
+            var toc = select('#post-toc');
 
             if (!toc || !toc.children.length) {
                 return {
@@ -106,9 +106,9 @@
                 }
             }
 
-            var bannerH = $('.post-header').clientHeight,
+            var bannerH = select('.post-header').clientHeight,
                 headerH = header.clientHeight,
-                titles = $('#post-content').querySelectorAll('h1, h2, h3, h4, h5, h6');
+                titles = select('#post-content').querySelectorAll('h1, h2, h3, h4, h5, h6');
 
             toc.querySelector('a[href="#' + titles[0].id + '"]').parentNode.classList.add('active');
 
@@ -172,7 +172,7 @@
         })(),
         hideOnMask: [],
         modal: function (target) {
-            this.$modal = $(target);
+            this.$modal = select(target);
             this.$off = this.$modal.querySelector('.close');
 
             var _this = this;
@@ -205,12 +205,12 @@
         },
         share: function () {
 
-            var pageShare = $('#pageShare'),
-                fab = $('#shareFab');
+            var pageShare = select('#pageShare'),
+                fab = select('#shareFab');
 
             var shareModal = new this.modal('#globalShare');
 
-            $('#menuShare').addEventListener(even, shareModal.toggle);
+            select('#menuShare').addEventListener(even, shareModal.toggle);
 
             if (fab) {
                 fab.addEventListener(even, function () {
@@ -225,26 +225,26 @@
             var wxModal = new this.modal('#wxShare');
             wxModal.onHide = shareModal.hide;
 
-            forEach.call($$('.wxFab'), function (el) {
+            forEach.call(selectAll('.wxFab'), function (el) {
                 el.addEventListener(even, wxModal.toggle)
             })
 
         },
         search: function () {
-            var searchWrap = $('#search-wrap');
+            var searchWrap = select('#search-wrap');
 
             function toggleSearch() {
                 searchWrap.classList.toggle('in');
             }
 
-            $('#search').addEventListener(even, toggleSearch);
+            select('#search').addEventListener(even, toggleSearch);
         },
         reward: function () {
             var modal = new this.modal('#reward');
-            $('#rewardBtn').addEventListener(even, modal.toggle);
+            select('#rewardBtn').addEventListener(even, modal.toggle);
 
-            var $rewardToggle = $('#rewardToggle');
-            var $rewardCode = $('#rewardCode');
+            var $rewardToggle = select('#rewardToggle');
+            var $rewardCode = select('#rewardCode');
             if ($rewardToggle) {
                 $rewardToggle.addEventListener('change', function () {
                     $rewardCode.src = this.checked ? this.dataset.alipay : this.dataset.wechat
@@ -255,7 +255,7 @@
 
             if (w.innerWidth < 760) return;
 
-            forEach.call($$('.waterfall'), function (el) {
+            forEach.call(selectAll('.waterfall'), function (el) {
                 var childs = el.querySelectorAll('.waterfall-item');
                 var columns = [0, 0];
 
@@ -274,7 +274,7 @@
             el.parentNode.parentNode.classList.toggle('expand')
         },
         page: (function () {
-            var $elements = $$('.fade, .fade-scale');
+            var $elements = selectAll('.fade, .fade-scale');
             var visible = false;
 
             return {
@@ -431,7 +431,7 @@
                 })
             }
 
-            forEach.call($$('.img-lightbox'), function (el) {
+            forEach.call(selectAll('.img-lightbox'), function (el) {
                 new LightBox(el)
             })
         })(),
@@ -460,7 +460,7 @@
     });
 
     var ignoreUnload = false;
-    var $mailTarget = $('a[href^="mailto"]');
+    var $mailTarget = select('a[href^="mailto"]');
     if($mailTarget) {
         $mailTarget.addEventListener(even, function () {
             ignoreUnload = true;
