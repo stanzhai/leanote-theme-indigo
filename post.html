@@ -154,12 +154,12 @@
 		{{template "share_comment.html" $}}
 	</article>
 
-	{{if $.themeInfo.Reward}}
+	{{if $.themeInfo.Site.Reward}}
 	<div id="reward" class="page-modal reward-lay">
 		<a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
 		<h3 class="reward-title">
 			<i class="icon icon-quote-left"></i>
-			{{$.themeInfo.RewardTitle}}
+			{{$.themeInfo.Site.RewardTitle}}
 			<i class="icon icon-quote-right"></i>
 		</h3>
 		<div class="reward-content">
@@ -177,8 +177,8 @@
 			</label>
 		</div>
 	</div>
+	{{end}}
 </div>
-{{end}}
 
 <!-- 一些在share_comment.js 需要使用的变量 -->
 <script>
