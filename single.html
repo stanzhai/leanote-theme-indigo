@@ -1,51 +1,60 @@
 {{template "header.html" .}}
+<header class="top-header" id="header">
+<div class="flex-row">
+	<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+		<i class="icon icon-lg icon-navicon"></i>
+	</a>
+	<div class="flex-col header-title ellipsis">{{.single.Title}}</div>
+	<div class="search-wrap" id="search-wrap">
+		<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+			<i class="icon icon-lg icon-chevron-left"></i>
+		</a>
+		<input type="text" id="key" class="search-input" autocomplete="off" placeholder="temp">
+		<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+			<i class="icon icon-lg icon-search"></i>
+		</a>
+	</div>
+</div>
+</header>
+<header class="content-header post-header">
+<div class="container fade-scale">
+	<h1 class="title">{{.single.Title}}</h1>
+	<h5 class="subtitle">
+		<div class="post-meta">
+			<time class="post-time" title="{{$.single.UpdatedTime | datetime}}" itemprop="datePublished">{{$.single.UpdatedTime | datetime}}</time>
+		</div>
+	</h5>
+</div>
+</header>
 
-<div id="postsContainer">
-	<div id="posts">
-		<div class="each-post">
-			<div class="title">
-				{{.single.Title}}
-			</div>
-			<div class="created-time">
-				<i class="fa fa-clock-o"></i> {{$.single.UpdatedTime | datetime}} 
-			</div>
-			
-			<!-- 仅为移动端 -->
-			<div class="mobile-created-time">
-			{{ if $.blogInfo.UserLogo}}
-				<img src="{{$.blogInfo.UserLogo}}" id="userLogo">
-			{{else}}
-				<img src="{{$.siteUrl}}/images/blog/default_avatar.png" id="userLogo">
-			{{end}}
-			{{$.blogInfo.Username}}
-			</div>
-			
-			<div class="desc" id="content">
-					{{$.single.Content | raw}}
-			</div>
+<div class="container body-wrap">
+<aside class="post-widget">
+
+</aside>
+<article id="post" class="post-article article-type-post fade in" itemprop="blogPost">
+	<div class="post-card">
+		<h1 class="post-card-title">{{.single.Title}}</h1>
+		<div class="post-meta">
+			<time class="post-time" title="{{$.single.UpdatedTime | datetime}}" itemprop="datePublished">{{$.single.UpdatedTime | datetime}}</time>
+		</div>
+		<div class="post-content" id="post-content" itemprop="postContent">
+		{{$.single.Content | raw}}
 		</div>
 	</div>
-</div>
-{{template "footer.html" $}}
 
-{{template "highlight.html" $}}
+	{{template "share_comment.html" $}}
+</article>
 
-<div id="blogNav">
-	<div id="blogNavNav">
-		<i class="fa fa-align-justify" title="Table of content"></i>
-		<span>Table of content</span>
-	</div>
-	<div id="blogNavContent">
-	</div>
-</div>
-
-<!-- 一些公用的js -->
-<script src="{{$.leanoteUrl}}/public/blog/js/common.js"></script>
+<!-- 一些在share_comment.js 需要使用的变量 -->
 <script>
-$(function() {
-	initNav();
-});
+var siteUrl = "{{$.siteUrl}}"; // common.js需要
+// 以下 share_comment.js需要
+var blogInfo={UserId: "{{$.blogInfo.UserId}}", OpenComment: {{$.blogInfo.OpenComment}}, CommentType: "{{$.blogInfo.CommentType}}"}; 
+var BLOG = {
+ROOT: "/",
+SHARE: !0,
+REWARD: !0
+};
 </script>
 
-</body>
-</html>
+{{template "footer.html" $}}
