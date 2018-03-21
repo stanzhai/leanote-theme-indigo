@@ -86,6 +86,13 @@
 						<i class="icon icon-lg icon-tags"></i>Tags
 					</a>
 				</li>
+				{{range $.themeInfo.Site.OtherMenus}}
+				<li class="waves-block waves-effect">
+					<a href="{{.Link}}" target="_blank">
+						<i class="icon icon-lg {{.Icon}}"></i>{{.Name}}
+					</a>
+				</li>
+				{{end}}
 			</ul>
 		  </div>
 		</div>

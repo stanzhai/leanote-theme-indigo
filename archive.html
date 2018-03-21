@@ -1,45 +1,65 @@
 {{template "header.html" .}}
-
-<div id="postsContainer">
-	<div class="container">
-	    <h2>Archives {{if $.curCateTitle}} - {{$.curCateTitle}}{{end}}</h2>
-	</div>
-	<div id="posts">
-		
-		<div class="each-post">
-		    <ul>
-		        {{range $.archives}}
-		        {{$year := .Year}}
-		       
-    		            {{range .MonthAchives}}
-        		        
-        		          <span class="archive-month">{{$year}}-{{.Month}}</span>
-        		          <ul>
-        		                {{range .Posts}}
-        		                <li>
-        		                    {{dateFormat .PublicTime "2006-01-02"}} <a href="{{$.postUrl}}/{{.UrlTitle}}">
-        		                    
-        		                    {{if .Title}}
-        		                        {{.Title}}
-        		                    {{else}}
-        		                        Untitled
-        		                    {{end}} 
-        		                    </a>
-        		                </li>
-        		                {{end}}
-        		           </ul>
-        		            
-        		        
-        		        {{end}}
-        		    
-    		    
-    		    {{end}}
-		    </ul>
+<header class="top-header" id="header">
+	<div class="flex-row">
+		<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+			<i class="icon icon-lg icon-navicon"></i>
+		</a>
+		<div class="flex-col header-title ellipsis">Archives</div>
+		<div class="search-wrap" id="search-wrap">
+			<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+				<i class="icon icon-lg icon-chevron-left"></i>
+			</a>
+			<input type="text" id="key" class="search-input" autocomplete="off" placeholder="temp">
+			<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+				<i class="icon icon-lg icon-search"></i>
+			</a>
 		</div>
 	</div>
+</header>
+<header class="content-header index-header">
+	<div class="container fade-scale">
+		<h1 class="title">Archives</h1>
+		<h5 class="subtitle">
+		</h5>
+	</div>
+</header>
+
+<div class="container body-wrap fade">
+{{range $.archives}}
+{{$year := .Year}}
+	{{range .MonthAchives}}
+	<h3 class="archive-separator">{{$year}}-{{.Month}}</h3>
+	<div class="waterfall">
+		{{range .Posts}}
+		<div class="waterfall-item">
+			<article class="article-card archive-article">
+				<div class="post-meta">
+					<time class="post-time" datetime="{{dateFormat .PublicTime "2006-01-02"}}" itemprop="datePublished">{{dateFormat .PublicTime "2006-01-02"}}</time>
+				</div>
+				<h3 class="post-title" itemprop="name">
+					<a class="post-title-link" href="{{$.postUrl}}/{{.UrlTitle}}">
+					{{if .Title}}
+						{{.Title}}
+					{{else}}
+						Untitled
+					{{end}} 
+					</a>
+				</h3>
+				{{if .Tags}} 
+				<div class="post-footer">
+					<ul class="article-tag-list">
+						{{range $index,$tag := .Tags}}
+						<li class="article-tag-list-item"><a class="article-tag-list-link waves-effect waves-button" href="{{$.tagPostsUrl}}/{{$tag}}">{{$tag}}</a></li>
+						{{end}}
+					</ul>
+				</div>
+				{{end}}
+			</article>
+		</div>
+		{{end}}
+	</div>
+	{{end}}
+{{end}}
 </div>
 
 {{template "footer.html" .}}
-
-</body>
-</html>
