@@ -87,7 +87,7 @@
 					</a>
 				</footer>
 			</blockquote>
-			{{if $.themeInfo.Reward}}
+			{{if $.themeInfo.Site.Reward}}
 			<div class="page-reward">
 				<a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
 			</div>
@@ -97,7 +97,7 @@
 				{{if $.post.Tags}} 
 				<ul class="article-tag-list">
 					{{range $index,$tag := $.post.Tags}}
-					<li class="article-tag-list-item"><a class="article-tag-list-link waves-effect waves-button" href="">{{$tag}}</a></li>
+					<li class="article-tag-list-item"><a class="article-tag-list-link waves-effect waves-button" href="{{$.tagPostsUrl}}/{{$tag}}">{{$tag}}</a></li>
 					{{end}}
 				</ul>
 				{{end}}

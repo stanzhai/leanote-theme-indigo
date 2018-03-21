@@ -1,19 +1,37 @@
 {{template "header.html" .}}
 
-<div id="postsContainer">
-	<div class="container">
-		<h2>Tag - {{.curTag}} </h2>
+<header class="top-header" id="header">
+	<div class="flex-row">
+		<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+			<i class="icon icon-lg icon-navicon"></i>
+		</a>
+		<div class="flex-col header-title ellipsis">Tag - {{.curTag}}</div>
+		<div class="search-wrap" id="search-wrap">
+			<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+				<i class="icon icon-lg icon-chevron-left"></i>
+			</a>
+			<input type="text" id="key" class="search-input" autocomplete="off" placeholder="temp">
+			<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+				<i class="icon icon-lg icon-search"></i>
+			</a>
+		</div>
 	</div>
+</header>
+<header class="content-header index-header">
+	<div class="container fade-scale">
+		<h1 class="title">Tag - {{.curTag}}</h1>
+		<h5 class="subtitle">
+			{{.curTag}} 文章列表
+		</h5>
+	</div>
+</header>
 
-	<div id="posts">
+<div class="container body-wrap">
+	<ul class="post-list">
 		{{template "post_abstract.html" $}}
-	    <!-- paging -->
-		{{template "paging.html" $}}
-	
-	</div>
+	</ul>
+	{{template "paging.html" $}}
 </div>
 
 {{template "footer.html" $}}
-{{template "highlight.html" $}}
-</body>
-</html>
+

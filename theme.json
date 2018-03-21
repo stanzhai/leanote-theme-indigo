@@ -6,6 +6,7 @@
     "Desc": "配置主题，请编辑修改theme.json文件。",
     "Site": {
         "Name": "Stan Zhai's Tech Blog",
+        "Keywords": "翟士丹, Stan Zhai",
         "Desc": "好记性不如烂键盘",
         "Owner": "Stan Zhai",
         "Email": "mail@stanzhai.site",
