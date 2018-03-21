@@ -28,22 +28,18 @@
 </header>
 
 <div class="container body-wrap">
-<aside class="post-widget">
-
-</aside>
-<article id="post" class="post-article article-type-post fade in" itemprop="blogPost">
-	<div class="post-card">
-		<h1 class="post-card-title">{{.single.Title}}</h1>
-		<div class="post-meta">
-			<time class="post-time" title="{{$.single.UpdatedTime | datetime}}" itemprop="datePublished">{{$.single.UpdatedTime | datetime}}</time>
+	<article id="post" class="post-article article-type-post fade in" itemprop="blogPost">
+		<div class="post-card">
+			<h1 class="post-card-title">{{.single.Title}}</h1>
+			<div class="post-meta">
+				<time class="post-time" title="{{$.single.UpdatedTime | datetime}}" itemprop="datePublished">{{$.single.UpdatedTime | datetime}}</time>
+			</div>
+			<div class="post-content" id="post-content" itemprop="postContent">
+			{{$.single.Content | raw}}
+			</div>
 		</div>
-		<div class="post-content" id="post-content" itemprop="postContent">
-		{{$.single.Content | raw}}
-		</div>
-	</div>
-
-	{{template "share_comment.html" $}}
-</article>
+	</article>
+</div>
 
 <!-- 一些在share_comment.js 需要使用的变量 -->
 <script>
