@@ -67,15 +67,6 @@
 						<i class="icon icon-lg icon-"></i>{{.Title}}
 					</a>
 				</li>
-				{{end}}
-	  		    <!-- 单页 -->
-				{{range $.singles}}
-				<li class="waves-block waves-effect {{if eq $.curSingleId .SingleId}}active{{end}}">
-					<a href="{{$.singleUrl}}/{{.UrlTitle}}">
-						<i class="icon icon-lg icon-clone"></i>{{.Title}}
-					</a>
-				</li>
-				{{end}}
 				<li class="waves-block waves-effect {{if $.curIsArchive}}active{{end}}">
 					<a href="{{$.archiveUrl}}">
 						<i class="icon icon-lg icon-archives"></i>Archives
@@ -86,6 +77,14 @@
 						<i class="icon icon-lg icon-tags"></i>Tags
 					</a>
 				</li>
+				<!-- 单页 -->
+				{{range $.singles}}
+				<li class="waves-block waves-effect {{if eq $.curSingleId .SingleId}}active{{end}}">
+					<a href="{{$.singleUrl}}/{{.UrlTitle}}">
+						<i class="icon icon-lg icon-clone"></i>{{.Title}}
+					</a>
+				</li>
+				{{end}}
 				{{range $.themeInfo.Site.OtherMenus}}
 				<li class="waves-block waves-effect">
 					<a href="{{.Link}}" target="_blank">
