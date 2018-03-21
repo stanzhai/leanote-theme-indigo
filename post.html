@@ -42,19 +42,7 @@
 <div class="container body-wrap">
 	<aside class="post-widget">
 		<nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-			<h4>TOC</h4>
-			<ol class="post-toc">
-					<li class="post-toc-item post-toc-level-2 active">
-						<a class="post-toc-link" href="#为何复杂">
-							<span class="post-toc-number">
-								1.
-							</span>
-							<span class="post-toc-text">
-								为何复杂
-							</span>
-						</a>
-					</li>
-				</ol>
+			<h4 id="toc-title">TOC</h4>
 		</nav>
 	</aside>
 	<article id="post" class="post-article article-type-post fade in" itemprop="blogPost">
@@ -214,7 +202,22 @@ var BLOG = {
 <script src="{{$.blogCommonJsUrl}}"></script>
 <!-- share && comment -->
 <script src="{{$.shareCommentJsUrl}}"></script>
-
+<!-- toc -->
+<script src="{{$.themeBaseUrl}}/toc.js"></script>
+<script>
+function createToc() {
+	$('#post-content').find('h1,h2,h3,h4,h5,h6').each(function () {
+		var text = $(this).text();
+		$(this).attr('id', text);
+		$(this).html('<a href="#' + text + '" class="headerlink" title="' + text + '"></a>' + text);
+	});
+	var toc = tocHelper($('#post-content'), {
+		class: 'post-toc',
+		list_number: true
+	});
+	$(toc).insertAfter('#toc-title');
+}
+</script>
 <!-- 
 markdown 
 调用markdown来解析得到html
@@ -225,7 +228,7 @@ markdown
 var content = $.trim($("#markdownContent textarea").val());
 md2Html(content, $("#post-content"), function(html) {
     $("pre").addClass("highlight");
-    prettyPrint();
+	createToc();
     weixin();
 });
 </script>
@@ -233,7 +236,7 @@ md2Html(content, $("#post-content"), function(html) {
 {{else}}
 <script>
 $(function() {
-	initNav();
+	createToc();
 	weixin();
 });
 </script>
