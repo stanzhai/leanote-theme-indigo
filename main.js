@@ -109,6 +109,12 @@
             var bannerH = select('.post-header').clientHeight,
                 headerH = header.clientHeight,
                 titles = select('#post-content').querySelectorAll('h1, h2, h3, h4, h5, h6');
+            if (titles.length == 0) {
+                return {
+                    fixed: noop,
+                    actived: noop
+                }
+            }
 
             toc.querySelector('a[href="#' + titles[0].id + '"]').parentNode.classList.add('active');
 
@@ -204,13 +210,8 @@
             this.$off && this.$off.addEventListener(even, this.hide);
         },
         share: function () {
-
             var pageShare = select('#pageShare'),
                 fab = select('#shareFab');
-
-            var shareModal = new this.modal('#globalShare');
-
-            select('#menuShare').addEventListener(even, shareModal.toggle);
 
             if (fab) {
                 fab.addEventListener(even, function () {
@@ -223,12 +224,9 @@
             }
 
             var wxModal = new this.modal('#wxShare');
-            wxModal.onHide = shareModal.hide;
-
             forEach.call(selectAll('.wxFab'), function (el) {
                 el.addEventListener(even, wxModal.toggle)
             })
-
         },
         search: function () {
             var searchWrap = select('#search-wrap');
@@ -525,8 +523,8 @@
 
     Blog.noop = noop;
     Blog.even = even;
-    Blog.$ = $;
-    Blog.$$ = $$;
+    Blog.$ = select;
+    Blog.$$ = selectAll; 
 
     Object.keys(Blog).reduce(function (g, e) {
         g[e] = Blog[e];

@@ -1,17 +1,17 @@
 <footer class="footer">
 	<div class="top">
 		<p>
-			<span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+			<span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
 		</p>
 	</div>
 	<div class="bottom">
 		<p><span>{{$.themeInfo.Site.Owner}} &copy; 2018</span>
+			{{if $.themeInfo.Site.ICP }}
 			<span>
-				{{if $.themeInfo.Site.ICP }}
-				<a href="http://www.miitbeian.gov.cn/" target="_blank">{{$.themeInfo.Site.ICP}}</a><br>
-				{{end}}
-				Power by <a href="https://www.leanote.com/" target="_blank">Leanote</a> Theme <a href="https://github.com/stanzhai/leanote-theme-indigo" target="_blank">Indigo</a>
+				<a href="http://www.miitbeian.gov.cn/" target="_blank">{{$.themeInfo.Site.ICP}}</a>
 			</span>
+			{{end}}
+			<span>Theme <a href="https://github.com/stanzhai/leanote-theme-indigo" target="_blank">Indigo</a></span>
 		</p>
 	</div>
 </footer>
