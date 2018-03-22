@@ -5,7 +5,7 @@
             </a>
             <div class="flex-col header-title ellipsis">
     {{if $.curIsIndex}}
-        {{$.blogInfo.Title}}
+        {{$.themeInfo.Site.Name}}
     {{else if $.curIsCate}}
         分类-{{$.curCateTitle}}
     {{else if $.curIsSearch}}
@@ -30,7 +30,9 @@
                 <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                     <i class="fa fa-lg fa-chevron-left"></i>
                 </a>
-                <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字，进行搜索">
+                <form action="{{$.searchUrl}}" method="get">
+                    <input type="text" name="keywords" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字，进行搜索">
+                </form>
                 <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                     <i class="fa fa-lg fa-search"></i>
                 </a>
@@ -41,7 +43,7 @@
         <div class="container fade-scale">
             <h1 class="title">
             {{if $.curIsIndex}}
-                {{$.blogInfo.Title}}
+                {{$.themeInfo.Site.Name}}
             {{else if $.curIsCate}}
                 分类-{{$.curCateTitle}}
             {{else if $.curIsSearch}}
@@ -62,10 +64,10 @@
                 归档
             {{end}}
             </h1>
-            <h5 class="subtitle">
+            <h4 class="subtitle">
     {{if $.curIsIndex}}
         {{$.themeInfo.Site.Desc}}
     {{end}}
-            </h5>
+            </h4>
         </div>
     </header>
