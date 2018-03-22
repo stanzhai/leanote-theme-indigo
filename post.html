@@ -180,31 +180,15 @@
 	{{end}}
 </div>
 
-<!-- 一些在share_comment.js 需要使用的变量 -->
+<script src="{{$.jQueryUrl}}"></script>
+<!-- toc -->
+<script src="{{$.themeBaseUrl}}/toc.js"></script>
 <script>
-var siteUrl = "{{$.siteUrl}}"; // common.js需要
-// 以下 share_comment.js需要
-var blogInfo={UserId: "{{$.blogInfo.UserId}}", OpenComment: {{$.blogInfo.OpenComment}}, CommentType: "{{$.blogInfo.CommentType}}"}; 
-var noteId = "{{$.post.NoteId}}"; // 
-var preLikeNum = +"{{$.post.LikeNum}}";
-var commentNum = +"{{$.post.CommentNum}}";
 var BLOG = {
 	ROOT: "/",
 	SHARE: !0,
 	REWARD: !0
 };
-</script>
-
-<script src="{{$.jQueryUrl}}"></script>
-<!-- 共享与评论css -->
-<link href="{{$.shareCommentCssUrl}}" rel="stylesheet">
-<!-- 一些公用的js -->
-<script src="{{$.blogCommonJsUrl}}"></script>
-<!-- share && comment -->
-<script src="{{$.shareCommentJsUrl}}"></script>
-<!-- toc -->
-<script src="{{$.themeBaseUrl}}/toc.js"></script>
-<script>
 function createToc() {
 	$('#post-content').find('h1,h2,h3,h4,h5,h6').each(function () {
 		var text = $(this).text();

@@ -16,6 +16,12 @@
         "OtherMenus": [
             {"Name": "GitHub", "Icon": "icon-github", "Link": "https://github.com/stanzhai"},
             {"Name": "知乎", "Icon": "icon-clone", "Link": "https://www.zhihu.com/people/stanzhai"}
-        ]
+        ],
+        "Comment": {
+            "ChangYan": {
+                "AppId": "",
+                "Config": ""
+            }
+        }
     }
 }
