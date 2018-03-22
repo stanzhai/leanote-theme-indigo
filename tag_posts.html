@@ -1,12 +1,5 @@
 {{template "header.html" .}}
 {{template "inner_header.html" .}}
-
-<div class="container body-wrap">
-	<ul class="post-list">
-		{{template "post_abstract.html" $}}
-	</ul>
-	{{template "paging.html" $}}
-</div>
-
+{{template "post_list.html" .}}
 {{template "footer.html" $}}
 

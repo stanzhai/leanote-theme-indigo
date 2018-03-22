@@ -15,7 +15,11 @@
     {{else if $.curIsTagPosts}}
         标签-{{$.curTag}}
     {{else if $.curIsPost}}
-        {{$.post.Title}}
+        {{if $.post.Title}}
+            {{$.post.Title}}
+        {{else}}
+            Untitled
+        {{end}}
     {{else if $.curIsSingle}}
         {{$.single.Title}}
     {{else if $.curIsArchive}}
@@ -26,48 +30,41 @@
                 <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                     <i class="icon icon-lg icon-chevron-left"></i>
                 </a>
-                <input type="text" id="key" class="search-input" autocomplete="off" placeholder="temp">
+                <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字，进行搜索">
                 <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                     <i class="icon icon-lg icon-search"></i>
                 </a>
             </div>
         </div>
     </header>
-    <header class="content-header index-header">
+    <header class="content-header {{if or $.curIsPost $.curIsSingle}} post-header {{else}} index-header {{end}}">
         <div class="container fade-scale">
             <h1 class="title">
-    {{if $.curIsIndex}}
-        {{$.themeInfo.Site.Name}}
-    {{else if $.curIsCate}}
-        分类-{{$.curCateTitle}}
-    {{else if $.curIsSearch}}
-        搜索-{{$.keywords}}
-    {{else if $.curIsTags}}
-        我的标签
-    {{else if $.curIsTagPosts}}
-        标签-{{$.curTag}}
-    {{else if $.curIsPost}}
-        {{$.post.Title}}
-    {{else if $.curIsSingle}}
-        {{$.single.Title}}
-    {{else if $.curIsArchive}}
-        归档
-    {{end}}
+            {{if $.curIsIndex}}
+                {{$.blogInfo.Title}}
+            {{else if $.curIsCate}}
+                分类-{{$.curCateTitle}}
+            {{else if $.curIsSearch}}
+                搜索-{{$.keywords}}
+            {{else if $.curIsTags}}
+                我的标签
+            {{else if $.curIsTagPosts}}
+                标签-{{$.curTag}}
+            {{else if $.curIsPost}}
+                {{if $.post.Title}}
+                    {{$.post.Title}}
+                {{else}}
+                    Untitled
+                {{end}}
+            {{else if $.curIsSingle}}
+                {{$.single.Title}}
+            {{else if $.curIsArchive}}
+                归档
+            {{end}}
             </h1>
             <h5 class="subtitle">
     {{if $.curIsIndex}}
         {{$.themeInfo.Site.Desc}}
-    {{else if $.curIsCate}}
-    {{else if $.curIsSearch}}
-    {{else if $.curIsTags}}
-        我的标签
-    {{else if $.curIsTagPosts}}
-        标签-{{$.curTag}}
-    {{else if $.curIsPost}}
-        {{$.post.Title}}
-    {{else if $.curIsSingle}}
-        {{$.single.Title}}
-    {{else if $.curIsArchive}}
     {{end}}
             </h5>
         </div>

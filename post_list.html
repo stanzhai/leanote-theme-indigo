@@ -1,27 +1,28 @@
-{{template "header.html" .}}
-{{template "inner_header.html" .}}
-
-<div class="container body-wrap fade">
-{{range $.archives}}
-{{$year := .Year}}
-	{{range .MonthAchives}}
-	<h3 class="archive-separator">{{$year}}-{{.Month}}</h3>
-	<div class="waterfall">
-		{{range .Posts}}
-		<div class="waterfall-item">
-			<article class="article-card archive-article">
+<div class="container body-wrap">
+	<ul class="post-list">
+		{{range $.posts}}
+		<li class="post-list-item fade">
+			<article id="post-{{$.postUrl}}/{{.UrlTitle}}" class="article-card article-type-post" itemprop="blogPost">
 				<div class="post-meta">
-					<time class="post-time" datetime="{{dateFormat .PublicTime "2006-01-02"}}" itemprop="datePublished">{{dateFormat .PublicTime "2006-01-02"}}</time>
+					<time class="post-time" title="{{.PublicTime | datetime}}" itemprop="datePublished">{{.PublicTime | datetime}}</time>
 				</div>
+			
 				<h3 class="post-title" itemprop="name">
 					<a class="post-title-link" href="{{$.postUrl}}/{{.UrlTitle}}">
 					{{if .Title}}
 						{{.Title}}
 					{{else}}
 						Untitled
-					{{end}} 
+					{{end}}
 					</a>
 				</h3>
+			
+				<div class="post-content" id="post-content" itemprop="postContent">
+					{{.Abstract | raw}}
+					<a href="{{$.postUrl}}/{{.UrlTitle}}" class="post-more waves-effect waves-button">
+						阅读全文...
+					</a>
+				</div>
 				{{if .Tags}} 
 				<div class="post-footer">
 					<ul class="article-tag-list">
@@ -32,11 +33,10 @@
 				</div>
 				{{end}}
 			</article>
-		</div>
+		</li>
 		{{end}}
-	</div>
-	{{end}}
-{{end}}
+	</ul>
+	{{template "paging.html" $}}
 </div>
 <script>
 var BLOG = {
@@ -45,4 +45,4 @@ var BLOG = {
 	REWARD: false
 };
 </script>
-{{template "footer.html" .}}
+
