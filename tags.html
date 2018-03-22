@@ -1,26 +1,5 @@
 {{template "header.html" .}}
-<header class="top-header" id="header">
-	<div class="flex-row">
-		<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-			<i class="icon icon-lg icon-navicon"></i>
-		</a>
-		<div class="flex-col header-title ellipsis">Tags</div>
-		<div class="search-wrap" id="search-wrap">
-			<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-				<i class="icon icon-lg icon-chevron-left"></i>
-			</a>
-			<input type="text" id="key" class="search-input" autocomplete="off" placeholder="temp">
-			<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-				<i class="icon icon-lg icon-search"></i>
-			</a>
-		</div>
-	</div>
-</header>
-<header class="content-header index-header">
-	<div class="container fade-scale">
-		<h1 class="title">Tags</h1>
-	</div>
-</header>
+{{template "inner_header.html" .}}
 
 <div class="container body-wrap fade">
 	<div class="tabs-bar container expand">

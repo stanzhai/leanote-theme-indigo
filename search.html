@@ -1,18 +1,11 @@
 {{template "header.html" .}}
+{{template "inner_header.html" .}}
 
-<div id="postsContainer">
-	<div class="container">
-		<h2>Search - {{.keywords}} </h2>
-	</div>
-
-	<div id="posts">
+<div class="container body-wrap">
+	<ul class="post-list">
 		{{template "post_abstract.html" $}}
-	    <!-- paging -->
-		{{template "paging.html" $}}
-	</div>
+	</ul>
+	{{template "paging.html" $}}
 </div>
 
 {{template "footer.html" $}}
-{{template "highlight.html" $}}
-</body>
-</html>
