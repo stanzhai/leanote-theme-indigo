@@ -7,3 +7,4 @@ TODO:
 - code color
 - reward image size
 - page meta
+- share image
