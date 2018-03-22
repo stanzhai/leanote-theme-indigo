@@ -14,8 +14,8 @@
         "Reward": true,
         "RewardTitle": "请我吃辣条",
         "OtherMenus": [
-            {"Name": "GitHub", "Icon": "icon-github", "Link": "https://github.com/stanzhai"},
-            {"Name": "知乎", "Icon": "icon-clone", "Link": "https://www.zhihu.com/people/stanzhai"}
+            {"Name": "GitHub", "Icon": "fa-github", "Link": "https://github.com/stanzhai"},
+            {"Name": "知乎", "Icon": "fa-clone", "Link": "https://www.zhihu.com/people/stanzhai"}
         ],
         "Comment": {
             "ChangYan": {

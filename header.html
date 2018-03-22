@@ -35,8 +35,8 @@
 	<div id="loading" class="active"></div>
 	<aside id="menu">
 		<div class="inner flex-row-vertical">
-		  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-			  <i class="icon icon-lg icon-close"></i>
+		  <a href="javascript:;" class="header-fa waves-effect waves-circle waves-light" id="menu-off">
+			  <i class="fa fa-lg fa-close"></i>
 		  </a>
 		  <div class="brand-wrap" style="background-image:url({{$.themeBaseUrl}}/images/brand.jpg)">
 			<div class="brand">
@@ -57,39 +57,39 @@
 			<ul class="nav">
 				<li class="waves-block waves-effect {{if $.curIsIndex}}active{{end}}">
 					<a href="{{.indexUrl}}">
-						<i class="icon icon-lg icon-home"></i>Home
+						<i class="fa fa-lg fa-home"></i>Home
 					</a>
 				</li>
 	  		    <!-- 分类页 -->
 				{{range $.cates}}
 				<li class="waves-block waves-effect {{if eq .CateId $.curCateId}}active{{end}}">
 					<a href="{{$.cateUrl}}/{{.UrlTitle}}">
-						<i class="icon icon-lg icon-"></i>{{.Title}}
+						<i class="fa fa-lg fa-"></i>{{.Title}}
 					</a>
 				</li>
 				{{end}}
 				<li class="waves-block waves-effect {{if $.curIsArchive}}active{{end}}">
 					<a href="{{$.archiveUrl}}">
-						<i class="icon icon-lg icon-archives"></i>Archives
+						<i class="fa fa-lg fa-archives"></i>Archives
 					</a>
 				</li>
 				<li class="waves-block waves-effect {{if $.curIsTags}}active{{end}}">
 					<a href="{{$.tagsUrl}}">
-						<i class="icon icon-lg icon-tags"></i>Tags
+						<i class="fa fa-lg fa-tags"></i>Tags
 					</a>
 				</li>
 				<!-- 单页 -->
 				{{range $.singles}}
 				<li class="waves-block waves-effect {{if eq $.curSingleId .SingleId}}active{{end}}">
 					<a href="{{$.singleUrl}}/{{.UrlTitle}}">
-						<i class="icon icon-lg icon-clone"></i>{{.Title}}
+						<i class="fa fa-lg fa-clone"></i>{{.Title}}
 					</a>
 				</li>
 				{{end}}
 				{{range $.themeInfo.Site.OtherMenus}}
 				<li class="waves-block waves-effect">
 					<a href="{{.Link}}" target="_blank">
-						<i class="icon icon-lg {{.Icon}}"></i>{{.Name}}
+						<i class="fa fa-lg {{.Icon}}"></i>{{.Name}}
 					</a>
 				</li>
 				{{end}}

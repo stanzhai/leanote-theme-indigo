@@ -69,23 +69,23 @@
 						<ul class="reset share-icons">
 							<li>
 							<a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=&title=&pic=" data-title="微博">
-								<i class="icon icon-weibo"></i>
+								<i class="fa fa-weibo"></i>
 							</a>
 							</li>
 							<li>
 							<a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-								<i class="icon icon-weixin"></i>
+								<i class="fa fa-weixin"></i>
 							</a>
 							</li>
 							<li>
 							<a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=&title=&source=" data-title=" QQ">
-								<i class="icon icon-qq"></i>
+								<i class="fa fa-qq"></i>
 							</a>
 							</li>
 						</ul>
 					</div>
 					<a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-						<i class="icon icon-share-alt icon-lg"></i>
+						<i class="fa fa-share-alt fa-lg"></i>
 					</a>
 				</div>
 			</div>
@@ -96,7 +96,7 @@
 			{{if $.prePost}}
 			<div class="waves-block waves-effect prev">
 				<a href="{{$.postUrl}}/{{$.prePost.UrlTitle}}" id="post-prev" class="post-nav-link">
-				<div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+				<div class="tips"><i class="fa fa-angle-left fa-lg fa-pr"></i> Prev</div>
 				<h4 class="title">{{$.prePost.Title}}</h4>
 				</a>
 			</div>
@@ -104,7 +104,7 @@
 			{{if $.nextPost}}
 			<div class="waves-block waves-effect next">
 				<a href="{{$.postUrl}}/{{$.nextPost.UrlTitle}}" id="post-next" class="post-nav-link">
-				<div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+				<div class="tips">Next <i class="fa fa-angle-right fa-lg fa-pl"></i></div>
 				<h4 class="title">{{$.nextPost.Title}}</h4>
 				</a>
 			</div>
@@ -117,18 +117,18 @@
 	</article>
 
 	<div class="page-modal wx-share" id="wxShare">
-		<a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+		<a class="close" href="javascript:;"><i class="fa fa-close"></i></a>
 		<p>扫一扫，分享到微信</p>
 		<img src="//api.qrserver.com/v1/create-qr-code/?data=" alt="微信分享二维码">
 	</div>
 
 	{{if $.themeInfo.Site.Reward}}
 	<div id="reward" class="page-modal reward-lay">
-		<a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+		<a class="close" href="javascript:;"><i class="fa fa-close"></i></a>
 		<h3 class="reward-title">
-			<i class="icon icon-quote-left"></i>
+			<i class="fa fa-quote-left"></i>
 			{{$.themeInfo.Site.RewardTitle}}
-			<i class="icon icon-quote-right"></i>
+			<i class="fa fa-quote-right"></i>
 		</h3>
 		<div class="reward-content">
 			<div class="reward-code">
