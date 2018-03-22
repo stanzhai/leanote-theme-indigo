@@ -2659,11 +2659,15 @@ pre .javascript .function {
 .img-lightbox img:hover {
   will-change: left, top, width, height;
 }
+#rewardCode {
+  width: 200px;
+  height: 200px;
+}
 #comments.vcomment {
   margin-top: 40px;
   padding: 30px;
   background: #fff;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
   border-radius: 4px;
 }
 #comments.vcomment .vheader .vinput:focus {
