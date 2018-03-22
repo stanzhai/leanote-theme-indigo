@@ -14,7 +14,8 @@
         animate = w.requestAnimationFrame,
         scrollSpeed = 200 / (1000 / 60),
         forEach = Array.prototype.forEach,
-        even = ('ontouchstart' in w && /Mobile|Android|iOS|iPhone|iPad|iPod|Windows Phone|KFAPWI/i.test(navigator.userAgent)) ? 'touchstart' : 'click',
+        isMobile = ('ontouchstart' in w && /Mobile|Android|iOS|iPhone|iPad|iPod|Windows Phone|KFAPWI/i.test(navigator.userAgent)),
+        even = isMobile ? 'touchstart' : 'click',
         isWX = /micromessenger/i.test(navigator.userAgent),
         noop = function () { },
         offset = function (el) {
