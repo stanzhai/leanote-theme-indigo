@@ -18,7 +18,7 @@
 				{{end}}
 			</h1>
 			<div class="post-meta">
-				<time class="post-time" title="{{$.post.PublicTime | datetime}} " itemprop="datePublished">{{$.post.PublicTime | datetime}} </time>
+				<time class="post-time" title="{{$.post.PublicTime | datetime}}" itemprop="datePublished">{{$.post.PublicTime | datetime}} </time>
 			</div>
 			<div class="post-content" id="post-content" itemprop="postContent">
 			{{if $.post.IsMarkdown }}
@@ -175,12 +175,17 @@ function createToc() {
 markdown 
 调用markdown来解析得到html
 -->
+<link href="/js/google-code-prettify/prettify.css" type="text/css" rel="stylesheet"/>
+<script src="/js/google-code-prettify/prettify.js"></script>
 {{if $.post.IsMarkdown }}
 <script src="/public/libs/md2html/md2html.js"></script>
 <script>
 var content = $.trim($("#markdownContent textarea").val());
 md2Html(content, $("#post-content"), function(html) {
-    $("pre").addClass("highlight");
+	$("pre").addClass("highlight");
+	prettyPrint();
+	$('.prettyprint').css("border", "none");
+	$('.prettyprint').css("border-radius", "0");
 	createToc();
 });
 </script>
@@ -188,6 +193,9 @@ md2Html(content, $("#post-content"), function(html) {
 {{else}}
 <script>
 $(function() {
+	prettyPrint();
+	$('.prettyprint').css("border", "none");
+	$('.prettyprint').css("border-radius", "0");
 	createToc();
 });
 </script>
