@@ -12,7 +12,8 @@
         "Email": "mail@stanzhai.site",
         "ICP": "鲁ICP备17006878号-2",
         "Reward": true,
-        "RewardTitle": "请我吃辣条",
+        "RewardTitle": "请我喝咖啡",
+        "Copyright": "非特殊说明，均为原创，原创文章，未经允许谢绝转载。",
         "OtherMenus": [
             {"Name": "GitHub", "Icon": "fa-github", "Link": "https://github.com/stanzhai"},
             {"Name": "知乎", "Icon": "fa-clone", "Link": "https://www.zhihu.com/people/stanzhai"}
