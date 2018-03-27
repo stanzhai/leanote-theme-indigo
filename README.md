@@ -4,7 +4,7 @@
 
 TODO:
 
-- code color
-- reward image size
 - page meta
+- page style
+- image view
 - share image
