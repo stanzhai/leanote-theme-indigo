@@ -181,6 +181,21 @@ function createChart() {
 			$("code.language-sequence").sequenceDiagram(options);
 		}
 	}
+	if ($('code.language-flow').length > 0) {
+		var script=document.createElement("script");
+		script.type="text/javascript";
+		script.src="{{$.themeBaseUrl}}/flowchart.min.js";
+		document.getElementsByTagName('head')[0].appendChild(script); 
+		script.onload = function() {
+			var chartId = 0;
+			$("code.language-flow").each(function () {
+				var diagram = flowchart.parse($(this).text());
+				$(this).html('<div id="flow-chart-' + chartId + '"/>');
+				diagram.drawSVG('flow-chart-' + chartId);
+				chartId++;
+			});
+		}
+	}
 }
 </script>
 <!-- 
@@ -194,10 +209,12 @@ markdown
 <script>
 var content = $.trim($("#markdownContent textarea").val());
 md2Html(content, $("#post-content"), function(html) {
+	/*
 	$("pre").addClass("highlight");
 	prettyPrint();
 	$('.prettyprint').css("border", "none");
 	$('.prettyprint').css("border-radius", "0");
+	*/
 	createToc();
 	createChart();
 });
@@ -206,9 +223,11 @@ md2Html(content, $("#post-content"), function(html) {
 {{else}}
 <script>
 $(function() {
+	/*
 	prettyPrint();
 	$('.prettyprint').css("border", "none");
 	$('.prettyprint').css("border-radius", "0");
+	*/
 	createToc();
 	createChart();
 });
