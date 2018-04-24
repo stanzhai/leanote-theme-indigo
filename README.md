@@ -7,4 +7,5 @@ TODO:
 - page meta
 - page style
 - image view
+- flow, sequence chart
 - share image
