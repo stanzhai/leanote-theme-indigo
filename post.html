@@ -171,24 +171,24 @@ function createToc() {
 	$(toc).insertAfter('#toc-title');
 }
 function createChart() {
-	if ($('code.language-sequence').length > 0) {
+	if ($('code.lang-sequence').length > 0) {
 		var script=document.createElement("script");
 		script.type="text/javascript";
 		script.src="{{$.themeBaseUrl}}/sequence-diagram-min.js";
 		document.getElementsByTagName('head')[0].appendChild(script); 
 		script.onload = function() {
 			var options = {theme: 'simple'};
-			$("code.language-sequence").sequenceDiagram(options);
+			$("code.lang-sequence").sequenceDiagram(options);
 		}
 	}
-	if ($('code.language-flow').length > 0) {
+	if ($('code.lang-flow').length > 0) {
 		var script=document.createElement("script");
 		script.type="text/javascript";
 		script.src="{{$.themeBaseUrl}}/flowchart.min.js";
 		document.getElementsByTagName('head')[0].appendChild(script); 
 		script.onload = function() {
 			var chartId = 0;
-			$("code.language-flow").each(function () {
+			$("code.lang-flow").each(function () {
 				var diagram = flowchart.parse($(this).text());
 				$(this).html('<div id="flow-chart-' + chartId + '"/>');
 				diagram.drawSVG('flow-chart-' + chartId);
@@ -205,19 +205,18 @@ markdown
 <link href="/js/google-code-prettify/prettify.css" type="text/css" rel="stylesheet"/>
 <script src="/js/google-code-prettify/prettify.js"></script>
 {{if $.post.IsMarkdown }}
-<script src="/public/libs/md2html/md2html.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
 var content = $.trim($("#markdownContent textarea").val());
-md2Html(content, $("#post-content"), function(html) {
+$('#post-content').html(marked(content));
 	/*
 	$("pre").addClass("highlight");
 	prettyPrint();
 	$('.prettyprint').css("border", "none");
 	$('.prettyprint').css("border-radius", "0");
 	*/
-	createToc();
-	createChart();
-});
+createToc();
+createChart();
 </script>
 <!-- 不是markdown -->
 {{else}}
