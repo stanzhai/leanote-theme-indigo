@@ -198,39 +198,21 @@ function createChart() {
 	}
 }
 </script>
-<!-- 
-markdown 
-调用markdown来解析得到html
--->
-<link href="/js/google-code-prettify/prettify.css" type="text/css" rel="stylesheet"/>
-<script src="/js/google-code-prettify/prettify.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 {{if $.post.IsMarkdown }}
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
 var content = $.trim($("#markdownContent textarea").val());
 $('#post-content').html(marked(content));
-	/*
-	$("pre").addClass("highlight");
-	prettyPrint();
-	$('.prettyprint').css("border", "none");
-	$('.prettyprint').css("border-radius", "0");
-	*/
+</script>
+{{end}}
+<script>
+hljs.initHighlightingOnLoad();
+$("pre").addClass("highlight");
 createToc();
 createChart();
 </script>
-<!-- 不是markdown -->
-{{else}}
-<script>
-$(function() {
-	/*
-	prettyPrint();
-	$('.prettyprint').css("border", "none");
-	$('.prettyprint').css("border-radius", "0");
-	*/
-	createToc();
-	createChart();
-});
-</script>
-{{end}}
 
 {{template "footer.html" $}}
