@@ -33,7 +33,7 @@
 	</head>
 <body>
 	<div id="loading" class="active"></div>
-	<aside id="menu">
+	<aside id="menu" {{if $.curIsPost}}class="hide"{{end}}>
 		<div class="inner flex-row-vertical">
 		  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
 			  <i class="fa fa-lg fa-arrow-left"></i>
