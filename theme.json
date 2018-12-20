@@ -19,9 +19,12 @@
             {"Name": "知乎", "Icon": "fa-clone", "Link": "https://www.zhihu.com/people/stanzhai"}
         ],
         "Comment": {
-            "ChangYan": {
-                "AppId": "",
-                "Config": ""
+            "Gitalk": {
+                "clientID": "",
+                "clientSecret": "",
+                "repo": "",
+                "owner": "",
+                "admin": ""
             }
         }
     }
