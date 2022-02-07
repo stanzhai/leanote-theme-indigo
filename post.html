@@ -198,13 +198,13 @@ function createChart() {
 	}
 }
 </script>
-<link href="https://cdn.bootcss.com/highlight.js/9.13.1/styles/vs.min.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/highlight.js/9.13.1/highlight.min.js"></script>
+<link href="//cdn.bootcdn.net/ajax/libs/highlight.js/11.4.0/styles/vs.min.css" rel="stylesheet">
+<script src="//cdn.bootcdn.net/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
 {{if $.post.IsMarkdown }}
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="//cdn.bootcdn.net/ajax/libs/marked/4.0.2/marked.min.js"></script>
 <script>
 var content = $.trim($("#markdownContent textarea").val());
-$('#post-content').html(marked(content));
+$('#post-content').html(marked.parse(content));
 </script>
 {{end}}
 <script>
